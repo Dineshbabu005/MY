@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <title>Amelia Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1000">
+                <span>DreamZ</span>
+            </div>
+            <div class="links">
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <a href="index.html">Home</a>
+                </div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <a href="about.html">About</a>
+                </div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <a href="skills.html">Skills</a>
+                </div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <a href="services page.html">Services</a>
+                </div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
+                    <a href="projects.html">projects</a>
+                </div>
+                <div class="link contact-btn" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                    <a href="contactme.html">Contact Us</a>
+                </div>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        </div>
+        <div class="dropdown">
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="skills.html">Skills</a>
+                <a href="services page.html">Services</a>
+                <a href="projects.html">projects</a>
+                <a href="contactme.html">Contact Us</a>
+                <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            </div>
+        </div>
+    </nav>  
+
+<style>
+     body {
+            margin: 0;
+            padding: 0;
+           }
+
+        nav {
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .skills-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0px 0px;
+            text-align: center;
+        }
+
+        .skills-section h1 {
+            font-size: 36px;
+            margin-bottom: 0px;   
+            color: #333;
+        }
+
+        .skill-category {
+            margin-bottom: 20px;
+        }
+
+        .skill-category h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .skill-card {
+            width: 120px;
+            height: 150px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill-card img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            font-size: 14px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .hamburg {
+                display: block;
+                font-size: 24px;
+                cursor: pointer;
+            }
+
+            .links {
+                display: none;
+            }
+        }
+    </style>
+    <section>
+        <div class="skills-section">
+            <section class="skills-section">
+                <h1>Skills</h1>
+               <div class="skill-category">
+                    <h2>Front-end</h2>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <img src="https://img.icons8.com/color/48/000000/javascript.png" alt="JavaScript">
+                            <p>JavaScript</p>
+                        </div>
+                        <div class="skill-card">
+                            <img src="https://img.icons8.com/color/48/000000/react-native.png" alt="React">
+                            <p>React</p>
+                        </div>
+                        <div class="skill-card">
+                            <img src="https://img.icons8.com/color/48/000000/html-5.png" alt="HTML5">
+                            <p>HTML5</p>
+                        </div>
+                        <div class="skill-card">
+                            <img src="https://img.icons8.com/color/48/000000/css3.png" alt="CSS3">
+                            <p>CSS3</p>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="skill-category">
+                    <h2>Back-end</h2>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <img src="https://img.icons8.com/color/48/000000/mysql-logo.png" alt="Mysql">
+                            <p>Mysql</p>
+                        </div>
+                        <div class="skill-card">
+                            <img src="https://img.icons8.com/color/48/000000/django.png" alt="Django">
+                            <p>Django</p>
+                        </div>
+                        <div class="skill-card">
+                            <img src="https://img.icons8.com/color/48/000000/python.png" alt="Python">
+                            <p>Python</p>
+                        </div>
+                        <div class="skill-card">
+                            <img src="https://img.icons8.com/color/48/000000/firebase.png" alt="Firebase">
+                            <p>Firebase</p>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="skill-category">
+                    <h2>Other</h2>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <img src="https://img.icons8.com/color/48/000000/git.png" alt="Git">
+                            <p>Git</p>
+                        </div>
+                        <div class="skill-card">
+                            <img src="https://img.icons8.com/color/48/000000/power-bi-2021.png" alt="Power Bi">
+                            <p>Power Bi</p>
+                        </div>
+                        <div class="skill-card">
+                            <img src="https://img.icons8.com/color/48/000000/adobe-photoshop.png" alt="Photoshop">
+                            <p>Photoshop</p>
+                        </div>
+                        <div class="skill-card">
+                            <img src="https://img.icons8.com/color/48/000000/linux.png" alt="Linux">
+                            <p>Linux</p>
+                        </div>
+                        <div class="skill-card">
+                            <img src="https://img.icons8.com/color/48/000000/tableau-software.png" alt="Tableau">
+                            <p>Tableau</p>
+                        </div>
+                    </div>
+                </div>
+        
+            </section>
+        </div>
+    </section>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ offset: 0 });
+        function hamburg() {
+            const navbar = document.querySelector(".dropdown");
+            navbar.style.transform = "translateY(0px)";
+        }
+        function cancel() {
+            const navbar = document.querySelector(".dropdown");
+            navbar.style.transform = "translateY(-500px)";
+        }
+    </script>
+</body>
+</html>

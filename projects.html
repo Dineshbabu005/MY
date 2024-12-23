@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <title>Projects</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1000">
+                <span>DreamZ</span>
+            </div>
+            <div class="links">
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <a href="index.html">Home</a>
+                </div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <a href="about.html">About</a>
+                </div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <a href="skills.html">Skills</a>
+                </div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <a href="services page.html">Services</a>
+                </div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
+                    <a href="projects.html">projects</a>
+                </div>
+                <div class="link contact-btn" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                    <a href="contactme.html">Contact Us</a>
+                </div>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        </div>
+        <div class="dropdown">
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="skills.html">Skills</a>
+                <a href="services page.html">Services</a>
+                <a href="projects.html">projects</a>
+                <a href="contactme.html">Contact Us</a>
+                <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            </div>
+        </div>
+    </nav>  
+
+<style>
+     body {
+            margin: 0;
+            padding: 0;
+           }
+
+        nav {
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        .card:hover {
+            transform: scale(1.03);
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 15px;
+        }
+        .card-title {
+            font-size: 1.2em;
+            margin: 0;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .card-date {
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 10px;
+        }
+        .card-tags {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+        .tag {
+            background-color: #eee;
+            color: #555;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+        }
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff4d4d;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .upload-form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .upload-form input, .upload-form button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 1em;
+        }
+        .auth-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+    <section>
+        <div class="container">
+            <div class="header">
+                <h1>Dynamic Project Portfolio</h1>
+                <p>Website ✦ Twitter ✦ CV ✦ Blog</p>
+            </div>
+    
+            <div class="auth-section">
+                <input type="password" id="owner-password" placeholder="Enter owner password">
+                <button onclick="authenticateOwner()">Login as Owner</button>
+                <button onclick="logout()">Logout</button>
+            </div>
+    
+            <div class="upload-form" id="upload-form" style="display: none;">
+                <input type="text" id="project-title" placeholder="Project Title">
+                <input type="text" id="project-date" placeholder="Project Date">
+                <input type="text" id="project-tags" placeholder="Tags (comma-separated)">
+                <input type="url" id="project-link" placeholder="Project Link (URL)">
+                <input type="file" id="project-image" accept="image/*">
+                <button onclick="addProject()">Add Project</button>
+            </div>
+    
+            <div class="grid" id="project-grid">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    
+        <script>
+            const OWNER_PASSWORD = "Spds@005"; // Replace with your desired password
+            let projects = JSON.parse(localStorage.getItem('projects')) || [];
+            let isOwner = false;
+    
+            const projectGrid = document.getElementById('project-grid');
+            const uploadForm = document.getElementById('upload-form');
+    
+            function authenticateOwner() {
+                const password = document.getElementById('owner-password').value;
+                if (password === OWNER_PASSWORD) {
+                    isOwner = true;
+                    uploadForm.style.display = 'block';
+                    renderProjects();
+                    alert('Logged in as Owner');
+                } else {
+                    alert('Incorrect password');
+                }
+            }
+    
+            function logout() {
+                isOwner = false;
+                uploadForm.style.display = 'none';
+                renderProjects();
+                alert('Logged out');
+            }
+    
+            function renderProjects() {
+                projectGrid.innerHTML = '';
+                projects.forEach((project, index) => {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+    
+                    card.innerHTML = `
+                        <a href="${project.link}" target="_blank">
+                            <img src="${project.image}" alt="${project.title}">
+                        </a>
+                        <div class="card-content">
+                            <h3 class="card-title">${project.title}</h3>
+                            <p class="card-date">${project.date}</p>
+                            <div class="card-tags">
+                                ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                        ${isOwner ? `<button class="delete-btn" onclick="deleteProject(${index})">Delete</button>` : ''}
+                    `;
+    
+                    projectGrid.appendChild(card);
+                });
+            }
+    
+            function addProject() {
+                const title = document.getElementById('project-title').value;
+                const date = document.getElementById('project-date').value;
+                const tags = document.getElementById('project-tags').value.split(',').map(tag => tag.trim());
+                const link = document.getElementById('project-link').value;
+                const imageInput = document.getElementById('project-image');
+    
+                if (title && date && tags && link && imageInput.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        projects.push({
+                            title,
+                            date,
+                            tags,
+                            link,
+                            image: event.target.result
+                        });
+                        saveProjects();
+                        renderProjects();
+    
+                        // Clear form inputs
+                        document.getElementById('project-title').value = '';
+                        document.getElementById('project-date').value = '';
+                        document.getElementById('project-tags').value = '';
+                        document.getElementById('project-link').value = '';
+                        document.getElementById('project-image').value = '';
+                    };
+                    reader.readAsDataURL(imageInput.files[0]);
+                } else {
+                    alert('Please fill in all fields and upload an image.');
+                }
+            }
+    
+            function deleteProject(index) {
+                projects.splice(index, 1);
+                saveProjects();
+                renderProjects();
+            }
+    
+            function saveProjects() {
+                localStorage.setItem('projects', JSON.stringify(projects));
+            }
+    
+            renderProjects();
+        </script>
+    </section>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ offset: 0 });
+        function hamburg() {
+            const navbar = document.querySelector(".dropdown");
+            navbar.style.transform = "translateY(0px)";
+        }
+        function cancel() {
+            const navbar = document.querySelector(".dropdown");
+            navbar.style.transform = "translateY(-500px)";
+        }
+    </script>
+</body>
+</html>

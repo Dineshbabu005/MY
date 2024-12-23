@@ -1,0 +1,192 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <title>Amelia Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1000">
+                <span>DreamZ</span>
+            </div>
+            <div class="links">
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <a href="index.html">Home</a>
+                </div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <a href="about.html">About</a>
+                </div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <a href="skills.html">skills</a>
+                </div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <a href="services page.html">Services</a>
+                </div>
+                <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
+                    <a href="projects.html">Projects</a>
+                </div>
+                <div class="link contact-btn" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+                    <a href="contactme.html">Contact Us</a>
+                </div>
+            </div>
+            <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        </div>
+        <div class="dropdown">
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="skills.html">skills</a>
+                <a href="services page.html">Services</a>
+                <a href="projects.html">projects</a>
+                <a href="contactme.html">Contact Us</a>
+                <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+            </div>
+        </div>
+    </nav> 
+<section>
+  <section class="services">
+    <div class="container">
+      <h1 class="section-title">Our <span>Services</span></h1>
+      <p class="section-description">
+        We offer a wide range of professional services to help you grow your business and enhance your brand.
+      </p>
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="icon">
+            <i class="fa fa-paint-brush"></i>
+          </div>
+          <h3>Graphic Design</h3>
+          <p>We create stunning and creative designs for all your branding and marketing needs.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon">
+            <i class="fa fa-code"></i>
+          </div>
+          <h3>Web Development</h3>
+          <p>Our team builds modern, responsive, and user-friendly websites to elevate your online presence.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon">
+            <i class="fa fa-cubes"></i>
+          </div>
+          <h3>Product Design</h3>
+          <p>We help design innovative and functional products that stand out in the market.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon">
+            <i class="fa fa-pen"></i>
+          </div>
+          <h3>Blog Writing</h3>
+          <p>Our expert writers craft engaging blog posts that drive traffic and build brand authority.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon">
+            <i class="fa fa-bullhorn"></i>
+          </div>
+          <h3>Social Marketing</h3>
+          <p>We develop effective social media marketing strategies to reach your target audience and increase engagement.</p>
+        </div>
+        <div class="service-card">
+          <div class="icon">
+            <i class="fa fa-camera"></i>
+          </div>
+          <h3>Photography</h3>
+          <p>We provide high-quality photography services to capture moments that matter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</section>
+<style>
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.section-title span {
+  color: #6c63ff;
+}
+
+.section-description {
+  text-align: center;
+  font-size: 1rem;
+  color: #777;
+  margin-bottom: 40px;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.service-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.service-card .icon {
+  font-size: 2rem;
+  color: #6c63ff;
+  margin-bottom: 15px;
+}
+
+.service-card h3 {
+  font-size: 1.25rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 0.9rem;
+  color: #777;
+  line-height: 1.6;
+}
+</style>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init({offset:0});
+</script>
+<script>
+    function hamburg(){
+        const navbar = document.querySelector(".dropdown")
+        navbar.style.transform = "translateY(0px)"
+    }
+    function cancel(){
+        const navbar = document.querySelector(".dropdown")
+        navbar.style.transform = "translateY(-500px)"
+    }
+</script>
+</body>
+</html>
