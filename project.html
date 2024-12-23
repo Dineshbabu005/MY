@@ -51,6 +51,105 @@
 
     <style>
         /* Add your custom styles here */
+        <style>
+     body {
+            margin: 0;
+            padding: 0;
+           }
+
+        nav {
+            border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            position: relative;
+        }
+        .card:hover {
+            transform: scale(1.03);
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 15px;
+        }
+        .card-title {
+            font-size: 1.2em;
+            margin: 0;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        .card-date {
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 10px;
+        }
+        .card-tags {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+        .tag {
+            background-color: #eee;
+            color: #555;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+        }
+        .delete-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff4d4d;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+        .upload-form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .upload-form input, .upload-form button {
+            margin: 5px;
+            padding: 10px;
+            font-size: 1em;
+        }
+        .auth-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+
         /* (Keep the styles from the previous section or adjust them as needed) */
     </style>
     
