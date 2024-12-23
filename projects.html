@@ -28,7 +28,7 @@
                     <a href="services page.html">Services</a>
                 </div>
                 <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
-                    <a href="project.html">projects</a>
+                    <a href="project.html">Projects</a>
                 </div>
                 <div class="link contact-btn" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
                     <a href="contactme.html">Contact Us</a>
@@ -42,110 +42,13 @@
                 <a href="about.html">About</a>
                 <a href="skills.html">Skills</a>
                 <a href="services page.html">Services</a>
-                <a href="project.html">projects</a>
+                <a href="project.html">Projects</a>
                 <a href="contactme.html">Contact Us</a>
                 <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
             </div>
         </div>
     </nav>
-        <style>
-     body {
-            margin: 0;
-            padding: 0;
-           }
 
-        nav {
-            border-bottom: 1px solid #ddd;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .container {
-            width: 90%;
-            margin: 20px auto;
-            max-width: 1200px;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            background-color: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-            position: relative;
-        }
-        .card:hover {
-            transform: scale(1.03);
-        }
-        .card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .card-content {
-            padding: 15px;
-        }
-        .card-title {
-            font-size: 1.2em;
-            margin: 0;
-            margin-bottom: 10px;
-            color: #333;
-        }
-        .card-date {
-            font-size: 0.9em;
-            color: #777;
-            margin-bottom: 10px;
-        }
-        .card-tags {
-            display: flex;
-            gap: 5px;
-            flex-wrap: wrap;
-        }
-        .tag {
-            background-color: #eee;
-            color: #555;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.8em;
-        }
-        .delete-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #ff4d4d;
-            color: #fff;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9em;
-        }
-        .upload-form {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .upload-form input, .upload-form button {
-            margin: 5px;
-            padding: 10px;
-            font-size: 1em;
-        }
-        .auth-section {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-    </style>
     <section>
         <div class="container">
             <div class="header">
@@ -173,141 +76,143 @@
                 <!-- Dynamic content will be inserted here -->
             </div>
         </div>
-
-        <script>
-            const OWNER_PASSWORD = "Spds@005"; // Replace with your desired password
-            let projects = JSON.parse(localStorage.getItem('projects')) || [];
-            let isOwner = false;
-
-            const projectGrid = document.getElementById('project-grid');
-            const uploadForm = document.getElementById('upload-form');
-            const imageInput = document.getElementById('project-image');
-            const imageUrlInput = document.getElementById('project-image-url');
-
-            function authenticateOwner() {
-                const password = document.getElementById('owner-password').value;
-                if (password === OWNER_PASSWORD) {
-                    isOwner = true;
-                    uploadForm.style.display = 'block';
-                    renderProjects();
-                    alert('Logged in as Owner');
-                } else {
-                    alert('Incorrect password');
-                }
-            }
-
-            function logout() {
-                isOwner = false;
-                uploadForm.style.display = 'none';
-                renderProjects();
-                alert('Logged out');
-            }
-
-            function renderProjects() {
-                projectGrid.innerHTML = '';
-                projects.forEach((project, index) => {
-                    const card = document.createElement('div');
-                    card.className = 'card';
-
-                    card.innerHTML = `
-                        <a href="${project.link}" target="_blank">
-                            <img src="${project.image}" alt="${project.title}">
-                        </a>
-                        <div class="card-content">
-                            <h3 class="card-title">${project.title}</h3>
-                            <p class="card-date">${project.date}</p>
-                            <div class="card-tags">
-                                ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                            </div>
-                        </div>
-                        ${isOwner ? `<button class="delete-btn" onclick="deleteProject(${index})">Delete</button>` : ''}
-                        ${isOwner ? `<button class="edit-btn" onclick="editProject(${index})">Edit</button>` : ''}
-                    `;
-
-                    projectGrid.appendChild(card);
-                });
-            }
-
-            function addProject() {
-                const title = document.getElementById('project-title').value;
-                const date = document.getElementById('project-date').value;
-                const tags = document.getElementById('project-tags').value.split(',').map(tag => tag.trim());
-                const link = document.getElementById('project-link').value;
-                const imageUrl = imageUrlInput.value;
-                const imageInputFile = imageInput.files[0];
-
-                if (title && date && tags && link && (imageUrl || imageInputFile)) {
-                    let imageSrc = imageUrl;
-                    if (imageInputFile) {
-                        const reader = new FileReader();
-                        reader.onload = function (event) {
-                            imageSrc = event.target.result;
-                            saveProject(title, date, tags, link, imageSrc);
-                        };
-                        reader.readAsDataURL(imageInputFile);
-                    } else {
-                        saveProject(title, date, tags, link, imageSrc);
-                    }
-                } else {
-                    alert('Please fill in all fields and upload an image or provide an image URL.');
-                }
-            }
-
-            function saveProject(title, date, tags, link, imageSrc) {
-                projects.push({
-                    title,
-                    date,
-                    tags,
-                    link,
-                    image: imageSrc
-                });
-                saveProjects();
-                renderProjects();
-
-                // Clear form inputs
-                document.getElementById('project-title').value = '';
-                document.getElementById('project-date').value = '';
-                document.getElementById('project-tags').value = '';
-                document.getElementById('project-link').value = '';
-                document.getElementById('project-image-url').value = '';
-                document.getElementById('project-image').value = '';
-            }
-
-            function deleteProject(index) {
-                projects.splice(index, 1);
-                saveProjects();
-                renderProjects();
-            }
-
-            function editProject(index) {
-                const project = projects[index];
-                document.getElementById('project-title').value = project.title;
-                document.getElementById('project-date').value = project.date;
-                document.getElementById('project-tags').value = project.tags.join(', ');
-                document.getElementById('project-link').value = project.link;
-                document.getElementById('project-image-url').value = project.image;
-
-                // Remove the project and allow re-adding it after edit
-                projects.splice(index, 1);
-                saveProjects();
-                renderProjects();
-            }
-
-            function saveProjects() {
-                localStorage.setItem('projects', JSON.stringify(projects));
-            }
-
-            renderProjects();
-        </script>
     </section>
+
+    <script>
+        const OWNER_PASSWORD = "Spds@005"; // Replace with your desired password
+        let projects = JSON.parse(localStorage.getItem('projects')) || [];
+        let isOwner = false;
+
+        const projectGrid = document.getElementById('project-grid');
+        const uploadForm = document.getElementById('upload-form');
+        const imageInput = document.getElementById('project-image');
+        const imageUrlInput = document.getElementById('project-image-url');
+
+        function authenticateOwner() {
+            const password = document.getElementById('owner-password').value;
+            if (password === OWNER_PASSWORD) {
+                isOwner = true;
+                uploadForm.style.display = 'block';
+                renderProjects();
+                alert('Logged in as Owner');
+            } else {
+                alert('Incorrect password');
+            }
+        }
+
+        function logout() {
+            isOwner = false;
+            uploadForm.style.display = 'none';
+            renderProjects();
+            alert('Logged out');
+        }
+
+        function renderProjects() {
+            projectGrid.innerHTML = '';
+            projects.forEach((project, index) => {
+                const card = document.createElement('div');
+                card.className = 'card';
+
+                card.innerHTML = `
+                    <a href="${project.link}" target="_blank">
+                        <img src="${project.image}" alt="${project.title}">
+                    </a>
+                    <div class="card-content">
+                        <h3 class="card-title">${project.title}</h3>
+                        <p class="card-date">${project.date}</p>
+                        <div class="card-tags">
+                            ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                    ${isOwner ? `<button class="delete-btn" onclick="deleteProject(${index})">Delete</button>` : ''}
+                    ${isOwner ? `<button class="edit-btn" onclick="editProject(${index})">Edit</button>` : ''}
+                `;
+
+                projectGrid.appendChild(card);
+            });
+        }
+
+        function addProject() {
+            const title = document.getElementById('project-title').value;
+            const date = document.getElementById('project-date').value;
+            const tags = document.getElementById('project-tags').value.split(',').map(tag => tag.trim());
+            const link = document.getElementById('project-link').value;
+            const imageUrl = imageUrlInput.value;
+            const imageInputFile = imageInput.files[0];
+
+            if (title && date && tags && link && (imageUrl || imageInputFile)) {
+                let imageSrc = imageUrl;
+                if (imageInputFile) {
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        imageSrc = event.target.result;
+                        saveProject(title, date, tags, link, imageSrc);
+                    };
+                    reader.readAsDataURL(imageInputFile);
+                } else {
+                    saveProject(title, date, tags, link, imageSrc);
+                }
+            } else {
+                alert('Please fill in all fields and upload an image or provide an image URL.');
+            }
+        }
+
+        function saveProject(title, date, tags, link, imageSrc) {
+            projects.push({
+                title,
+                date,
+                tags,
+                link,
+                image: imageSrc
+            });
+            saveProjects();
+            renderProjects();
+
+            // Clear form inputs
+            document.getElementById('project-title').value = '';
+            document.getElementById('project-date').value = '';
+            document.getElementById('project-tags').value = '';
+            document.getElementById('project-link').value = '';
+            document.getElementById('project-image-url').value = '';
+            document.getElementById('project-image').value = '';
+        }
+
+        function deleteProject(index) {
+            projects.splice(index, 1);
+            saveProjects();
+            renderProjects();
+        }
+
+        function editProject(index) {
+            const project = projects[index];
+            document.getElementById('project-title').value = project.title;
+            document.getElementById('project-date').value = project.date;
+            document.getElementById('project-tags').value = project.tags.join(', ');
+            document.getElementById('project-link').value = project.link;
+            document.getElementById('project-image-url').value = project.image;
+
+            // Remove the project and allow re-adding it after edit
+            projects.splice(index, 1);
+            saveProjects();
+            renderProjects();
+        }
+
+        function saveProjects() {
+            localStorage.setItem('projects', JSON.stringify(projects));
+        }
+
+        renderProjects();
+    </script>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({ offset: 0 });
+
         function hamburg() {
             const navbar = document.querySelector(".dropdown");
             navbar.style.transform = "translateY(0px)";
         }
+
         function cancel() {
             const navbar = document.querySelector(".dropdown");
             navbar.style.transform = "translateY(-500px)";
