@@ -91,6 +91,68 @@
             </div>
         </div>
     </section>
+    <style>
+    .project-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+}
+
+.project-card img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 10px;
+}
+
+.project-details {
+    flex: 1;
+}
+
+.project-details h3 {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.project-date {
+    font-size: 1em;
+    color: #777;
+    margin: 5px 0;
+}
+
+.project-tags {
+    margin: 10px 0;
+}
+
+.project-tags .tag {
+    background-color: #eaeaea;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 5px;
+    font-size: 0.9em;
+}
+
+.project-details a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.project-details a:hover {
+    text-decoration: underline;
+}
+</style>
 
     <script>
         const OWNER_PASSWORD = "Spds@005"; // Replace with your desired password
